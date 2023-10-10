@@ -1,0 +1,53 @@
+{% extends 'ProjectManager/base.html' %}
+
+{% load static %}
+
+{% block title %} Log In Page {% endblock %}
+
+{% block content %}
+    <div id="log_in_page_container">
+        <div id="lic_left">
+            <h2> LOG INTO YOUR ACCOUNT </h2>
+
+            <img id="logo" src="{% static 'ProjectManager/Offto_logo.png' %}" alt="logo_placeholder">
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div id="log_in_form_container">
+                    <div id="log_in_form_row_container">
+                        <div class="form_row">
+                            {{ log_in_form.username.label }}
+                            <div class="form_input">
+                                {{ log_in_form.username }}
+                            </div>
+                        </div>
+                        <div class="form_row">
+                            {{ log_in_form.password.label }}
+                            <div class="form_input">
+                                {{ log_in_form.password }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <input class="button" type="submit" value="Log In">
+                </div>
+            </form>
+
+            <h3> New to Offto? </h3>
+
+            <p> Click <a href="{% url 'accounts' page='create_account' %}">here</a> to make a new account </p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p> * {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+            <div id="lic_right">
+            </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %} {% endblock %}

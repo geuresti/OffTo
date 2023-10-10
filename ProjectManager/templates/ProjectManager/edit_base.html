@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'ProjectManager/pm.css' %}">
+        <title>{% block title %} Base Title {% endblock %}</title>
+    </head>
+    <body>
+
+        <div id="base_edit_top">
+            <img id="logo" src="{% static 'ProjectManager/Offto_logo.png' %}" alt="logo_placeholder">
+
+            <h2> {% block top_middle_info %} Editting Base Template {% endblock %} </h2>
+
+            {% block top_right_button %}
+                <button class="button"> Placeholder </button>
+            {% endblock %}
+        </div>
+
+        <div id="base_edit_body_container">
+            <div id="base_edit_inner_container">
+                <div id="base_edit_field_container">
+                    {% block form %}
+                        <p> Form goes here </p>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}
+            <div id="footer">
+              <div class="footer_content">
+                {% block footer_left %} <p> footer left </p> {% endblock %}
+              </div>
+              <div class="footer_content">
+                {% block footer_right %} <p> footer right </p> {% endblock %}
+              </div>
+            </div>
+        {% endblock %}
+    </body>
+</html>

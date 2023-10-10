@@ -1,0 +1,43 @@
+{% extends 'ProjectManager/edit_base.html' %}
+
+{% block title %} Create Project {% endblock %}
+
+{% block top_middle_info %} Create New Project {% endblock %}
+
+{% block top_right_button %}
+    <p class="top_right_button_placeholder"> placeholder </p>
+{% endblock %}
+
+{% block form %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="edit_form_container">
+
+            {{ create_project_form.project_title }}
+
+            {{ create_project_form.project_description }}
+
+            <div id="lower_edit_project_container">
+
+                <div class="select_deadline"> 
+                    {{ create_project_form.project_deadline }}
+                </div>
+
+                <button class="button" onclick="window.location.href = '{% url 'projects' page='create' %}';">
+                    Create Project
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block footer_left %} {% endblock %}
+
+{% block footer_right %}
+    <button class="button" onclick="window.location.href = '{% url 'index' %}';">
+        Cancel
+    </button>
+{% endblock %}

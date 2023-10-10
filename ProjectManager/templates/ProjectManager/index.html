@@ -1,0 +1,61 @@
+{% extends 'ProjectManager/base.html' %}
+
+{% load static %}
+
+{% block title %} Index Page {% endblock %}
+
+{% block content %}
+
+        <div id="index_top">
+            <img id="logo" src="{% static 'ProjectManager/Offto_logo.png' %}" alt="logo_placeholder">
+            {% if user.is_authenticated %}
+                <h2> Welcome, {{ user.username }} </h2>
+            {% else %}
+                <h2> No one is logged in. How did you get to this page? </h2>
+            {% endif %}
+            <button class="button" onclick="window.location.href = '{% url 'projects' page='create' %}';">
+                Start New Project
+            </button>
+        </div>
+
+        <div id="index_container">
+            <div class="index_item">
+                {% if user_projects %}
+                    {% for project in user_projects %}
+                        <div class="icl_item">
+                            <div class="icl_content">
+                                <h4> {{ project.project_title }} </h4>
+                                <button class="button" onclick="window.location.href = '{% url 'view_project' page='view' project_id=project.pk %}';">
+                                    View
+                                </button>
+                                <button class="button" onclick="window.location.href = '{% url 'edit_project' page='edit' project_id=project.pk %}';">
+                                    Edit
+                                </button>
+                                <p> {{ project.project_description }} </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="icl_content">
+                        <h4> You don't have any projects yet. </h4>
+                        <p> Click the "create project" button to start a project. </p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="index_item">
+                <p>
+                  Nunc eu turpis sit amet orci ullamcorper tempus accumsan
+                  commodo sapien.
+                </p>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block footer_left %} {% endblock %}
+
+{% block footer_right %}
+    <button class="button" onclick="window.location.href = '{% url 'accounts' page='log_out' %}';">
+        Log Out
+    </button>
+{% endblock %}

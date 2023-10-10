@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'ProjectManager/pm.css' %}">
+        <title>{% block title %} Base Title {% endblock %}</title>
+    </head>
+    <body>
+        {% block content %}
+
+            <p> Currently serving base template </p>
+
+        {% endblock %}
+
+        {% block footer %}
+        <div id="footer">
+          <div class="footer_content">
+            {% block footer_left %} <p> footer left </p> {% endblock %}
+          </div>
+          <div class="footer_content">
+            {% block footer_right %} <p> footer right </p> {% endblock %}
+          </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

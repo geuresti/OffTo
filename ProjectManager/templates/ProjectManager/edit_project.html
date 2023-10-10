@@ -1,0 +1,42 @@
+{% extends 'ProjectManager/edit_base.html' %}
+
+{% block title %} Edit Project {% endblock %}
+
+{% block top_middle_info %} Editting: {{ project.project_title }} {% endblock %}
+
+{% block top_right_button %}
+    <button class="button" onclick="window.location.href = '{% url 'delete_project' page='delete' project_id=project.pk %}';">
+        Delete Project
+    </button>
+{% endblock %}
+
+{% block form %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="edit_form_container">
+
+            {{ project_form.project_title }}
+
+            {{ project_form.project_description }}
+
+            <div id="lower_edit_project_container">
+              <div class="select_deadline">
+                  {{ project_form.project_deadline }}
+              </div>
+
+              <button class="button" onclick="window.location.href = '{% url 'edit_project' page='edit' project_id=project.pk %}';">
+                  Update
+              </button>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block footer_left %} {% endblock %}
+
+{% block footer_right %}
+    <button class="button" onclick="window.location.href = '{% url 'index' %}';">
+        Cancel
+    </button>
+{% endblock %}

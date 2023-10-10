@@ -1,0 +1,42 @@
+{% extends 'ProjectManager/edit_base.html' %}
+
+{% block title %} Create Task {% endblock %}
+
+{% block top_middle_info %} New Task {% endblock %}
+
+{% block top_right_button %}
+    <p class="top_right_button_placeholder"> Delete Task </p>
+{% endblock %}
+
+{% block form %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="edit_form_container">
+            {{ create_task_form.task_title }}
+
+            {{ create_task_form.task_description }}
+
+            <div id="lower_edit_project_container">
+
+                <div class="select_deadline">
+                    {{ create_task_form.deadline }}
+                </div>
+
+                <button class="button" onclick="window.location.href = '{% url 'create_task' project_id=project.pk %}';">
+                    Create Task
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block footer_left %} {% endblock %}
+
+{% block footer_right %}
+    <button class="button" onclick="window.location.href = '{% url 'view_project' page='view' project_id=project.pk %}';">
+        Cancel
+    </button>
+{% endblock %}

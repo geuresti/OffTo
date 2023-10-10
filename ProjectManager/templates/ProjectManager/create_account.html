@@ -1,0 +1,61 @@
+{% extends 'ProjectManager/base.html' %}
+
+{% load static %}
+
+{% block title %} Create Account Page {% endblock %}
+
+{% block content %}
+
+    <div id="create_account_container">
+        <div id="create_account_header">
+            <img id="logo" src="{% static 'ProjectManager/Offto_logo.png' %}" alt="logo_placeholder">
+            <h2> Create A New Account </h2>
+        </div>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div id="create_account_form_container">
+                <div id="create_account_form_row_container">
+                    <div class="form_row">
+                        {{ create_account_form.email.label }}
+                        <div class="form_input">
+                            {{ create_account_form.email }}
+                        </div>
+                    </div>
+                    <div class="form_row">
+                        {{ create_account_form.username.label }}
+                        <div class="form_input">
+                            {{ create_account_form.username }}
+                        </div>
+                    </div>
+                    <div class="form_row">
+                        {{ create_account_form.password.label }}
+                        <div class="form_input">
+                            {{ create_account_form.password }}
+                        </div>
+                    </div>
+                    <div class="form_row">
+                        {{ create_account_form.confirm_password.label }}
+                        <div class="form_input">
+                            {{ create_account_form.confirm_password }}
+                        </div>
+                    </div>
+                </div>
+
+                <input class="button" id="create_account_button" type="submit" value="Create Account">
+            </div>
+        </form>
+
+        <div id="create_account_footer"></div>
+    </div>
+
+<!--
+    {% if messages %}
+        {% for message in messages %}
+            <p> * {{ message }} </p>
+        {% endfor %}
+    {% endif %}
+-->
+{% endblock %}
+
+{% block footer %} {% endblock %}
